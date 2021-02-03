@@ -26,7 +26,7 @@ class Source(Agent):
     def generate_truck(self):
         #try:
                                                                           # changed from self.location to self.pos
-        agent = Truck(self, 'Truck' + str(self.model.truck_counter), self.model, self.pos, componentlocation=self.name)
+        agent = Truck('Truck' + str(self.model.truck_counter), self, self.pos, componentlocation=self.name)
                                                                                                     #giving the name of the current component.
         if agent:
             #self.model.schedule.add(agent)  #is this necessary? 

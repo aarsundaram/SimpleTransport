@@ -29,17 +29,19 @@ class Truck(Agent):
         print("at the move() of vehicles.py ")
         #current location:
         current_location = self.pos #the source should have given its position to the agent upon creation
+        next_location= (0,0)
+        next_location_object = self.model
         print("current location of" + str(self.unique_id) + "is" + str(current_location))
-        print("self.model in move() of vehicles.py", self.model)
-        shortestpath = self.model.shortest
+        print("self.model in move() of vehicles.py", str(self.model.model))
+        shortestpath = self.model.model.shortest
         #next_location should be what comes next, in the shorttest path. 
         for i in range(len(shortestpath)):
-            if i < len(self.model.shortest)-1:
-                if current_location== self.model.shortest[i]:
-                    next_location= self.model.shortest[i+1]
+            if i < len(shortestpath)-1:
+                if current_location== shortestpath[i]:
+                    next_location= shortestpath[i+1]
             else:
-                self.model.trucks_exited+=1 
-        for agents in self.model.schedule.agents:
+                self.model.model.trucks_exited+=1 
+        for agents in self.model.model.schedule.agents:
             if next_location == agents.name:
                 next_location_object = agents
         
